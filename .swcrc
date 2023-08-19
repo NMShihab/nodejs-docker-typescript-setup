@@ -1,0 +1,20 @@
+{
+  "env": {
+    //  Targeted version
+    "target": {
+      "node": 18
+    }
+  },
+  // Parserer
+  "jsc": {
+    "parser": {
+      "syntax": "typescript"
+    }
+  },
+  // Module type
+  "module": {
+    "type": "commonjs"
+  },
+  //   Use for debugging
+  "sourceMaps": "inline"
+}
