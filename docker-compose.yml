@@ -1,4 +1,12 @@
 services:
+  postgres:
+    image: postgres:15-alpine # Choose latest
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_DB: db_name # Db name
+      POSTGRES_HOST_METHOD: trust
+
   backend:
     build: .
     ports:
@@ -9,6 +17,9 @@ services:
       - /usr/src/app/.pnpm-store
       - /usr/src/app/node_modules
     command: pnpm start:docker
+    depends_on:
+      - postgres
 
     environment:
+      DATABASE_URL: postgres://postgres@postgres/db_name # Db setup
       PORT: 8000
